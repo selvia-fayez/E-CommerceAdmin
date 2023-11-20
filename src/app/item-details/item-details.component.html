@@ -1,0 +1,19 @@
+<!-- categorychain -->
+<div class="container">
+  <h2 class="text-center my-3">Item Details</h2>
+  <div class="d-flex">
+    <div *ngFor="let category of categoryChain">
+      <p>{{ category.name }}/</p>
+    </div>
+    {{ item.name }}
+  </div>
+
+  <div class="d-flex align-items-center mb-2">
+    <h3 class="mb-0">Item Name:</h3>
+    <p class="mb-0 ms-2 fs-5">{{ item.name }}</p>
+  </div>
+  <div class="d-flex align-items-center mb-2">
+    <h3 class="mb-0">Description:</h3>
+    <p class="mb-0 ms-2 fs-5">{{ item.description }}</p>
+  </div>
+</div>

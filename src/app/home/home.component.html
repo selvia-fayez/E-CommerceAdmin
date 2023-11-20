@@ -1,1 +1,182 @@
-<p>home works!</p>
+<div class="container-fluid text-center my-3">
+  <h3>Admin Page</h3>
+  <p-button
+    label="Add Category"
+    styleClass="p-button-primary me-3"
+    (click)="visibleCategory = true"
+  ></p-button>
+  <p-button
+    label="Add Item"
+    styleClass="p-button-primary"
+    (click)="visibleItem = true"
+  ></p-button>
+  <div class="row">
+    <div class="col-3 mt-3">
+      <app-side-menu></app-side-menu>
+    </div>
+    <div class="col-8">
+      <app-items></app-items>
+    </div>
+  </div>
+</div>
+<p-dialog
+  header="Add Category"
+  [(visible)]="visibleCategory"
+  [style]="{ width: '50vw' }"
+  [draggable]="false"
+  [resizable]="false"
+  [modal]="true"
+>
+  <form
+    class="mx-1 mx-md-4"
+    [formGroup]="addCategoryForm"
+    (ngSubmit)="AddCategory(addCategoryForm)"
+  >
+    <div class="mb-3">
+      <input
+        type="text"
+        pInputText
+        formControlName="name"
+        class="w-75"
+        placeholder="Enter Category Name"
+      />
+      <div
+        class="alert alert-danger w-75"
+        *ngIf="
+          addCategoryForm.controls['name'].invalid &&
+          addCategoryForm.controls['name'].touched
+        "
+      >
+        <span *ngIf="addCategoryForm.controls['name'].hasError('required')"
+          >Category name is Required</span
+        >
+      </div>
+    </div>
+    <div class="mb-3">
+      <textarea
+        rows="5"
+        cols="30"
+        formControlName="description"
+        pInputTextarea
+        class="w-75 pb-0"
+        placeholder="Enter Category description"
+      ></textarea>
+      <div
+        class="alert alert-danger w-75"
+        *ngIf="
+          addCategoryForm.controls['description'].invalid &&
+          addCategoryForm.controls['description'].touched
+        "
+      >
+        <span
+          *ngIf="addCategoryForm.controls['description'].hasError('required')"
+          >Category description is Required</span
+        >
+      </div>
+    </div>
+    <div class="d-flex flex-row align-items-center mb-4">
+      <p-dropdown
+        [placeholder]="'Select Parent'"
+        [options]="parentOptions"
+        optionLabel="name"
+        formControlName="parentId"
+        appendTo="body"
+      ></p-dropdown>
+    </div>
+    <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+      <button
+        [disabled]="addCategoryForm.invalid"
+        type="submit"
+        class="btn btn-primary btn-lg w-50"
+      >
+        <span>Add</span>
+      </button>
+    </div>
+  </form>
+</p-dialog>
+
+<p-dialog
+  header="Add Item"
+  [(visible)]="visibleItem"
+  [style]="{ width: '50vw' }"
+  [draggable]="false"
+  [resizable]="false"
+  [modal]="true"
+>
+  <form
+    class="mx-1 mx-md-4"
+    [formGroup]="addItemForm"
+    (ngSubmit)="AddItem(addItemForm)"
+  >
+    <div class="mb-3">
+      <input
+        type="text"
+        pInputText
+        formControlName="name"
+        class="w-75"
+        placeholder="Enter Item Name"
+      />
+      <div
+        class="alert alert-danger w-75"
+        *ngIf="
+          addItemForm.controls['name'].invalid &&
+          addItemForm.controls['name'].touched
+        "
+      >
+        <span *ngIf="addItemForm.controls['name'].hasError('required')"
+          >Item name is Required</span
+        >
+      </div>
+    </div>
+    <div class="mb-3">
+      <textarea
+        rows="5"
+        cols="30"
+        formControlName="description"
+        pInputTextarea
+        class="w-75 pb-0"
+        placeholder="Enter Item description"
+      ></textarea>
+      <div
+        class="alert alert-danger w-75"
+        *ngIf="
+          addItemForm.controls['description'].invalid &&
+          addItemForm.controls['description'].touched
+        "
+      >
+        <span *ngIf="addItemForm.controls['description'].hasError('required')"
+          >Item description is Required</span
+        >
+      </div>
+    </div>
+    <div class="mb-3">
+      <p-dropdown
+        [placeholder]="'Select Category'"
+        [options]="categoryOptions"
+        optionLabel="name"
+        formControlName="categoryId"
+        appendTo="body"
+      ></p-dropdown>
+      <div
+        class="alert alert-danger w-75"
+        *ngIf="
+          addItemForm.controls['categoryId'].invalid &&
+          addItemForm.controls['categoryId'].touched
+        "
+      >
+        <span *ngIf="addItemForm.controls['categoryId'].hasError('required')"
+          >You Should assign the item to a Category</span
+        >
+      </div>
+    </div>
+    <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+      <button
+        [disabled]="addItemForm.invalid"
+        type="submit"
+        class="btn btn-primary btn-lg w-50"
+      >
+        <span>Add</span>
+      </button>
+    </div>
+  </form>
+</p-dialog>
