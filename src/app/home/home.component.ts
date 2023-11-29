@@ -57,6 +57,7 @@ export class HomeComponent implements OnInit {
     localStorage.setItem('categories', JSON.stringify(this.Categories));
     this.updateOptions();
     this.addCategoryForm.reset();
+    this.visibleCategory = false;
   }
   AddItem(formData: FormGroup) {
     let itemData = {
@@ -69,5 +70,6 @@ export class HomeComponent implements OnInit {
     this.Items.push(itemData);
     localStorage.setItem('items', JSON.stringify(this.Items));
     this.addItemForm.reset();
+    this.visibleItem = false;
   }
 }

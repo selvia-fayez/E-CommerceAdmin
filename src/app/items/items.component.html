@@ -3,15 +3,8 @@
     <div *ngFor="let item of Items" class="col-4 my-3">
       <a [routerLink]="['/itemDetails', item.id]">
         <p-card>
-          <ng-template pTemplate="header">
-            <img
-              alt="Card"
-              src="https://primefaces.org/cdn/primeng/images/usercard.png"
-            />
-          </ng-template>
-
           <h3>{{ item.name }}</h3>
-          <p>
+          <p style="max-height: 10rem">
             {{ item.description }}
           </p>
         </p-card>

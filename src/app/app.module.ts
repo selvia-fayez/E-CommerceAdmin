@@ -17,6 +17,7 @@ import { PanelMenuModule } from 'primeng/panelmenu';
 import { ItemsComponent } from './items/items.component';
 import { ItemDetailsComponent } from './item-details/item-details.component';
 import { SideMenuComponent } from './side-menu/side-menu.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { SideMenuComponent } from './side-menu/side-menu.component';
     ItemsComponent,
     ItemDetailsComponent,
     SideMenuComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,

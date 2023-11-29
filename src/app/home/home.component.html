@@ -12,13 +12,14 @@
   ></p-button>
   <div class="row">
     <div class="col-3 mt-3">
-      <app-side-menu></app-side-menu>
+      <app-side-menu [Categories]="Categories"></app-side-menu>
     </div>
     <div class="col-8">
-      <app-items></app-items>
+      <app-items [Items]="Items"></app-items>
     </div>
   </div>
 </div>
+
 <p-dialog
   header="Add Category"
   [(visible)]="visibleCategory"
